@@ -1,16 +1,20 @@
-import React from 'react';
+import React, { useContext } from 'react';
 
 import './item-card.component.css';
 
+import { AllCourse, AllCourses } from '../../pages/courses/all-courses/allCourses.page';
+
 import { Link } from 'react-router-dom';
 
-export function CourseItemCard(props) {
+export function CourseItemCard() {
+
+    const allCourses  = useContext(AllCourse)
 
     return (
         <div className="row">
 
             {
-                props.allCourses.map(res => {
+                allCourses.map(res => {
                     return(
                         <div className="col-md-4" key={res.id}> 
                             <div className="card">

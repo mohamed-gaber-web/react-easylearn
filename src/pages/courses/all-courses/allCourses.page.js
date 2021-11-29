@@ -13,6 +13,8 @@ import LoadingBar from 'react-top-loading-bar'
 
 import './allCourses.page.css';
 
+export const AllCourse = React.createContext();
+
 export function AllCourses() {
 
     const history = useHistory();
@@ -24,14 +26,16 @@ export function AllCourses() {
         setLoading(50)
         axios.get(`${ getAllCoursesAPI }?Offset=0&Limit=10`)
         .then(response => {
-            setLoading(isLoading + 100)
-            setCourses(response.data.result);
+            console.log(response)
+            // setLoading(isLoading + 100)
+            // setCourses(response.data.result);
         })
         .catch((error) => {
-            if (error.response.status === 403) {
-                localStorage.clear();
-                history.push('/login');
-            }
+            console.log(error)
+            // if (error.response.status === 403) {
+            //     localStorage.clear();
+            //     history.push('/login');
+            // }
         })
     }, [])
 
@@ -46,9 +50,13 @@ export function AllCourses() {
                 onLoaderFinished={() => setLoading(0)}
             />
 
-            <CourseItemCard allCourses={courses} />
+            <AllCourse.Provider value={ courses }>
+                <CourseItemCard />
+            </AllCourse.Provider>
 
         </div>
+
+
     )
 }
 
