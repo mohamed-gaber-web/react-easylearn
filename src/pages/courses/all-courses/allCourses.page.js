@@ -27,15 +27,15 @@ export function AllCourses() {
         axios.get(`${ getAllCoursesAPI }?Offset=0&Limit=10`)
         .then(response => {
             console.log(response)
-            // setLoading(isLoading + 100)
-            // setCourses(response.data.result);
+            setLoading(isLoading + 100)
+            setCourses(response.data.result);
         })
         .catch((error) => {
             console.log(error)
-            // if (error.response.status === 403) {
-            //     localStorage.clear();
-            //     history.push('/login');
-            // }
+            if (error.response.status === 403) {
+                localStorage.clear();
+                history.push('/login');
+            }
         })
     }, [])
 

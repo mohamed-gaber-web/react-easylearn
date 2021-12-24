@@ -8,7 +8,7 @@ import { getUserCourseDetails } from "../../../api.constants";
 
 import LoadingBar from 'react-top-loading-bar'
 
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 
 import moment from 'moment';
 
@@ -52,7 +52,7 @@ export function UserCourseDetails() {
                         <h5> <b> Valid For : </b> { course.course.duration } Day </h5>
 
                         <div className="course-status mt-5">
-                            <button className="btn btn-primary"> Material </button>
+                            <Link to={ "/course-material/" + course.course.id } className="btn btn-primary"> Material </Link>
                             <button className="btn btn-primary"> Exercise </button>
                             <button className="btn btn-primary"> Final test </button>
                         </div>

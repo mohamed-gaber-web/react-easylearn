@@ -14,6 +14,7 @@ import { NotFound } from './pages/not found/not-found.page';
 
 import AuthService from './services/auth.service';
 import ProtectedRoute from './protected-route/protected-route';
+import { CourseMaterial } from './pages/courses/courseMtaterial/courseMaterial';
 
 export const UserContext = React.createContext();
 export const UserAuth = React.createContext();
@@ -37,6 +38,7 @@ export default function App () {
             <ProtectedRoute path="/my-courses" exact component={ MyCourses } />
             <ProtectedRoute path="/course-details/:id" exact component={ CourseDetails } />
             <ProtectedRoute path="/user-course-details/:userId" exact component={ UserCourseDetails } />
+            <ProtectedRoute path="/course-material/:courseId" exact component={ CourseMaterial } />
             <ProtectedRoute path="/register" exact component={ Register } />
             <ProtectedRoute path="/profile" exact component={ Profile } />
         </div>
